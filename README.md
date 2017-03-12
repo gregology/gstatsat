@@ -40,3 +40,7 @@ Or install it yourself as:
 >> bearing.visible?
 => True
 ```
+
+## Notes
+
+The `visible?` method on `SatelliteBearing` is based on an elevation greater than 0. This simplified model assumes the earth is a perfect sphere and that the base station is at sea level. A satellites actual visibility may be affected by natural features such as mountains. It may also be possible to sight a satellite at a bearing less than 0 if the base station is at orbital altitudes.
