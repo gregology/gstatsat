@@ -7,6 +7,6 @@ Gem::Specification.new do |s|
   s.authors     = ["Greg Clarke"]
   s.email       = 'greg@gho.st'
   s.files       = ["lib/gstatsat.rb"]
-  s.homepage    = 'http://github.com/gregology/gstatsat'
+  s.homepage    = 'https://github.com/gregology/gstatsat'
   s.license     = 'MIT'
 end
