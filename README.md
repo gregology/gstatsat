@@ -1,6 +1,9 @@
 [![Gem](https://img.shields.io/gem/v/gstatsat.svg?style=flat)](http://rubygems.org/gems/gstatsat)
+[![License](http://img.shields.io/badge/license-MIT-yellow.svg?style=flat)](https://github.com/gregology/gstatsat/blob/master/LICENSE)
 [![Gregology](https://img.shields.io/badge/contact-Gregology-blue.svg?style=flat)](http://gregology.net/contact/)
-[![License](http://img.shields.io/badge/license-MIT-green.svg?style=flat)](https://github.com/gregology/gstatsat/blob/master/LICENSE)
+[![Downloads](https://img.shields.io/gem/dt/gstatsat.svg?style=flat)](http://rubygems.org/gems/gstatsat)
+
+https://img.shields.io/coveralls/jekyll/jekyll.svg
 
 # Gstatsat
 A Ruby Gem for calculating bearings of geostationary satellites
