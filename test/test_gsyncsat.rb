@@ -90,4 +90,20 @@ class GstatsatTest < Minitest::Test
     }
     assert_equal( 'invalid latitude value', exception.message )
   end
+
+  def test_satellite_bearing_raises_error_on_invalid_satellite
+    base_station = Gstatsat::BaseStation.new(@ottawa)
+    exception = assert_raises(KeyError) {
+      Gstatsat::SatelliteBearing.new(base_station: base_station, satellite: 'string')
+    }
+    assert_equal( 'satellite is not Satellite class', exception.message )
+  end
+
+  def test_satellite_bearing_raises_error_on_invalid_base_station
+    satellite = Gstatsat::Satellite.new(@i4f3)
+    exception = assert_raises(KeyError) {
+      Gstatsat::SatelliteBearing.new(base_station: 'string', satellite: satellite)
+    }
+    assert_equal( 'base_station is not BaseStation class', exception.message )
+  end
 end

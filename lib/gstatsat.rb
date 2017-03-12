@@ -6,11 +6,12 @@ module Gstatsat
       @longitude = params.fetch(:longitude)
     end
 
-    def validate(params)
-      longitude = params.fetch(:longitude)
-      raise KeyError, 'longitude is not numeric' unless longitude.is_a? Numeric
-      raise KeyError, 'invalid longitude value' unless longitude >= -180 && longitude <= 180
-    end
+    private
+      def validate(params)
+        longitude = params.fetch(:longitude)
+        raise KeyError, 'longitude is not numeric' unless longitude.is_a? Numeric
+        raise KeyError, 'invalid longitude value' unless longitude >= -180 && longitude <= 180
+      end
   end
 
   class BaseStation
@@ -21,19 +22,21 @@ module Gstatsat
       @longitude = params.fetch(:longitude)
     end
 
-    def validate(params)
-      longitude = params.fetch(:longitude)
-      latitude = params.fetch(:latitude)
-      raise KeyError, 'longitude is not numeric' unless longitude.is_a? Numeric
-      raise KeyError, 'latitude is not numeric' unless latitude.is_a? Numeric
-      raise KeyError, 'invalid longitude value' unless longitude >= -180 && longitude <= 180
-      raise KeyError, 'invalid latitude value' unless latitude >= -90 && latitude <= 90
-    end
+    private
+      def validate(params)
+        longitude = params.fetch(:longitude)
+        latitude = params.fetch(:latitude)
+        raise KeyError, 'longitude is not numeric' unless longitude.is_a? Numeric
+        raise KeyError, 'latitude is not numeric' unless latitude.is_a? Numeric
+        raise KeyError, 'invalid longitude value' unless longitude >= -180 && longitude <= 180
+        raise KeyError, 'invalid latitude value' unless latitude >= -90 && latitude <= 90
+      end
   end
 
   class SatelliteBearing
     attr_accessor :azimuth, :elevation
     def initialize(params = {})
+      validate(params)
       @satellite = params.fetch(:satellite)
       @base_station = params.fetch(:base_station)
       calculate_bearing
@@ -62,6 +65,11 @@ module Gstatsat
 
       def to_degrees(radians)
         radians * 180 / Math::PI
+      end
+
+      def validate(params)
+        raise KeyError, 'satellite is not Satellite class' unless params.fetch(:satellite).is_a? Gstatsat::Satellite
+        raise KeyError, 'base_station is not BaseStation class' unless params.fetch(:base_station).is_a? Gstatsat::BaseStation
       end
   end
 end
