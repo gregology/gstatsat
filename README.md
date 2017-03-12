@@ -5,7 +5,9 @@ A Ruby Gem for calculating bearings of geostationary satellites
 
 Add this line to your application's Gemfile:
 
-    gem 'gstatsat'
+``` ruby
+gem 'gstatsat'
+```
 
 And then execute:
 
