@@ -55,8 +55,8 @@ module Gstatsat
         sigma = earths_radius.to_f / ( earths_radius + satellite_height )
         beta = Math.acos(Math.cos(base_station_latitude_rads) * Math.cos(azimuthal_angle_rads))
 
-        @elevation = to_degrees(Math.atan(( Math.cos(beta) - sigma) / Math.sin(beta))).round(1)
-        @azimuth = to_degrees(Math::PI + Math::atan(Math::tan(azimuthal_angle_rads)/Math::sin(base_station_latitude_rads))).round(1)
+        @elevation = to_degrees(Math.atan((Math.cos(beta) - sigma) / Math.sin(beta))).round(1)
+        @azimuth = to_degrees(Math::PI + Math::atan(Math::tan(azimuthal_angle_rads) / Math::sin(base_station_latitude_rads))).round(1)
       end
 
       def to_radians(degrees)
@@ -68,8 +68,8 @@ module Gstatsat
       end
 
       def validate(params)
-        raise KeyError, 'satellite is not Satellite class' unless params.fetch(:satellite).is_a? Gstatsat::Satellite
-        raise KeyError, 'base_station is not BaseStation class' unless params.fetch(:base_station).is_a? Gstatsat::BaseStation
+        raise KeyError, 'satellite is not Gstatsat::Satellite class' unless params.fetch(:satellite).is_a? Gstatsat::Satellite
+        raise KeyError, 'base_station is not Gstatsat::BaseStation class' unless params.fetch(:base_station).is_a? Gstatsat::BaseStation
       end
   end
 end

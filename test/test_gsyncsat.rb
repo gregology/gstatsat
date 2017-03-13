@@ -96,7 +96,7 @@ class GstatsatTest < Minitest::Test
     exception = assert_raises(KeyError) {
       Gstatsat::SatelliteBearing.new(base_station: base_station, satellite: 'string')
     }
-    assert_equal( 'satellite is not Satellite class', exception.message )
+    assert_equal( 'satellite is not Gstatsat::Satellite class', exception.message )
   end
 
   def test_satellite_bearing_raises_error_on_invalid_base_station
@@ -104,6 +104,6 @@ class GstatsatTest < Minitest::Test
     exception = assert_raises(KeyError) {
       Gstatsat::SatelliteBearing.new(base_station: 'string', satellite: satellite)
     }
-    assert_equal( 'base_station is not BaseStation class', exception.message )
+    assert_equal( 'base_station is not Gstatsat::BaseStation class', exception.message )
   end
 end
